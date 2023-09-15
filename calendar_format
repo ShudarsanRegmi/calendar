@@ -1,0 +1,37 @@
+
+// console.log(luxon);
+// const x = new Date(year,month,0);
+// const numOfDays = x.getDate();
+
+// let dateManager = {
+//     getDate  
+// }
+
+// let calendar = {
+//     "2023": [
+//         {
+//             "monthName": "January",
+//             "numOfDays": 21,
+//             "numOfLeaves" : 3,
+//             "daylist": [
+//                 {
+//                     tarikh: "01",
+//                     day: "Sunday",
+//                     leaveDay: false
+
+//                 }
+//             ]
+//         },
+//         {},
+//         {},
+//         {},
+//         {},
+//         {},
+//         {},
+//         {},
+//         {},
+//         {},
+//         {},
+//         {},
+//     ] 
+// }
