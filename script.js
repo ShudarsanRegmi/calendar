@@ -11,6 +11,7 @@ const month_lt_btn  = document.getElementById("month_left_toggle_btn");
 const month_rt_btn = document.getElementById("month_right_toggle_btn");
 const monthlist = document.getElementById("monthlist");
 const yearlistInput  = document.getElementById("yearlist");
+const calTitle = document.getElementById("menubar_center");
 
 for(let i=1900;i<=2050;i++) {
     const option = document.createElement("option");
@@ -115,7 +116,7 @@ let renderer = {
         // console.log(monthList);
         
     },
-    loadDate: function(year,month) {
+    loadDate: function(year,month,date=0) {
       try{
         const table = document.getElementById("calendarTable");
         main.removeChild(table);
@@ -126,11 +127,11 @@ let renderer = {
         this.createTable(monthList[month]);
         this.state.year = year;
         this.state.month = month;
+        this.state.date = date;
         // updating on the ui
         monthlist.value = renderer.state.month;
-        console.log("here we are")
+        console.log("here we are");
         yearlistInput.value = renderer.state.year;
-
 
     },
     state: {
@@ -144,17 +145,42 @@ let renderer = {
         console.log("Inside stateupdate")
         console.log(renderer.state.year);
 
-        this.loadDate(renderer.state.year,renderer.state.month);
+        this.uiUpdate();
+        let day = new Date(renderer.state.year,renderer.state.month,renderer.state.date).getDay();
+        calTitle.innerText = ` ${weeks[day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
+    },
+    uiUpdate: function()  {
+        this.loadDate(renderer.state.year,renderer.state.month,renderer.state.date);
         monthlist.value = renderer.state.month;
         yearlist.value = renderer.state.year;
-    }
+        const selectedBox = document.getElementsByClassName(`gatey-${this.state.date}`)[0];
+        selectedBox.classList.add("selected");
+        console.log(selectedBox);   
+        console.log("selected box ")
+
+    },
+    
 }
 
 
 
 
+function initialize() {
+     // Your code here
+     let mydate = new Date();
+     let year = mydate.getFullYear();
+     let month = mydate.getMonth();
+     let date = mydate.getDate();    
+     console.log("date = ", date);
+ 
+     renderer.loadDate(year,month,date);
+     let day = new Date(renderer.state.year,renderer.state.month,renderer.state.date).getDay();
+     calTitle.innerText = ` ${weeks[day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
+     const selectedBox = document.getElementsByClassName(`gatey-${renderer.state.date}`)[0];
+     selectedBox.classList.add("selected");
+}
+initialize();
 
-renderer.loadDate(2022,11);
 
 
 
