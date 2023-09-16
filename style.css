@@ -7,13 +7,46 @@ body  {
     background-color: antiquewhite;
 }
 section {
-    border: 1px solid black;
+    border: 10px solid red;
     background-color: orange;
+
     
 
 }
+main{
+    border: 5px solid blue;
+    display: flex;
+    flex-direction: column;
+
+
+}
+th {
+    text-align: center;
+}
 td {
+    text-align: center;
     border: 1px solid black;
     padding: 10px;
+    width: 50px;
+    height: auto;
     
+}
+#menubar {
+    display: flex;
+    justify-content: space-between;
+}
+.menuboxes {
+    border: 5px solid  cyan;
+    display: flex;
+}
+#menubar_left {
+    display: flex;
+    border: 3px solid pink;
+}
+#monthChangerCon {
+    display: flex;
+    border: 3px solid red;
+}
+#menubar > form {
+    display: flex;
 }

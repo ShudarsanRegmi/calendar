@@ -9,9 +9,48 @@
 </head>
 <body>
     <section>
-        <main>
-            
-        </main>
+    <main>
+        <div id="menubar">
+            <div class="menuboxes" id="=menubar_left">
+                <div class="year">
+                    <form>
+                        <select name="year" id="yearlist">
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023 </option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </form>
+                </div>
+                <div id="monthChangerCon">
+                    <button id="month_left_toggle_btn">Left</button>
+                    <div class="month">
+                         <form>
+                            <select name="month" id="monthlist">
+                                    <option value="0">January</option>
+                                    <option value="1">February</option>
+                                    <option value="2">March</option>
+                                    <option value="3">April</option>
+                                    <option value="4">May</option>
+                                    <option value="5">June</option>
+                                    <option value="6">July</option>
+                                    <option value="7">August</option>
+                                    <option value="8">September</option>
+                                    <option value="9">October</option>
+                                    <option value="10">November</option>
+                                    <option value="11">December</option>
+
+                        </select>
+                    </form>
+                    </div>
+                    <button id="month_right_toggle_btn">Right</button>
+                </div>
+            </div>
+            <div class="menuboxes" id="menubar_center">center</div>
+            <div class="menuboxes" id="menubar_center">right</div>
+        </div>    
+    </main>
     </section>
 <script type="text/JavaScript" src="./script.js" ></script>
 </body>

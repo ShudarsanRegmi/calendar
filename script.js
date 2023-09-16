@@ -5,6 +5,10 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 
 const months_full = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+//  handling the input from menu forms
+const month_lt_btn  = document.getElementById("month_left_toggle_btn");
+const month_rt_btn = document.getElementById("month_right_toggle_btn");
+const monthlist = document.getElementById("monthlist");
 
 function calendarMaker(year) {
     let monthList = [];
@@ -43,6 +47,7 @@ let renderer = {
         console.log(monthData);
 
         const mytable = document.createElement("table");
+        mytable.id="calendarTable";
         main.appendChild(mytable);
 
         const thead = document.createElement("thead");
@@ -98,16 +103,59 @@ let renderer = {
             counter+=7;
         }
         
-        console.log(monthList);
+        // console.log(monthList);
         
+    },
+    loadDate: function(year,month) {
+      try{
+        const table = document.getElementById("calendarTable");
+        main.removeChild(table);
+
+      }catch(error) {}
+
+        let monthList = calendarMaker(year);
+        this.createTable(monthList[month]);
+        this.state.year = year;
+        this.state.month = month;
+        // updating on the ui
+        monthlist.value = renderer.state.month;
+
+
+    },
+    state: {
+        year:200,
+        month:200,
+        date: 0,
+        day: 0
+    },
+    stateUpdate: function(year,month) {
+    renderer.state.month = (((renderer.state.month-1) % 12)+12)%12;
+    renderer.loadDate(renderer.state.year,renderer.state.month);
+    monthlist.value = renderer.state.month;
     }
 }
 
-const monthList = calendarMaker("2005");
-console.log("printing monthlist");
-console.log(monthList);
-const month=11
-renderer.createTable(monthList[month]);
-// alert("month = " + months_full[month])
+renderer.loadDate(2023,3);
 
-// left with the issue of not displaying the date which takes 7 rows to display 
+
+
+month_lt_btn.addEventListener("click",()=> {
+    // performing month modulo 12 operation
+    let month =  (((renderer.state.month-1) % 12)+12)%12;
+    let year = null; // handle this in the future
+    renderer.stateUpdate(year,month);
+
+})
+month_rt_btn.addEventListener("click",()=> {
+    let month =  (((renderer.state.month+1) % 12)+12)%12;
+    let year = null; // handle this in the future
+    renderer.stateUpdate(year,month);
+})
+
+const yearlistInput  = document.getElementById("yearlist");
+monthlist.addEventListener("change",() =>{
+    let month = monthlist.value;
+    let year = null // handle this in the future
+    renderer.stateUpdate(year,month);
+    console.log("Event triggered...");
+})
