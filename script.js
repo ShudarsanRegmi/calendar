@@ -129,7 +129,7 @@ let renderer = {
         day: 0
     },
     stateUpdate: function(year,month) {
-    renderer.state.month = (((renderer.state.month-1) % 12)+12)%12;
+    renderer.state.month = month;
     renderer.loadDate(renderer.state.year,renderer.state.month);
     monthlist.value = renderer.state.month;
     }
