@@ -1,14 +1,25 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 15px;
+    font-family: sans-serif;
 }
 body  {
     background-color: antiquewhite;
 }
 section {
-    border: 10px solid red;
+    /* border: 10px solid red; */
     background-color: orange;
+    min-height:  100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     
 
@@ -17,8 +28,12 @@ main{
     border: 5px solid blue;
     display: flex;
     flex-direction: column;
+    padding: 5px;
 
 
+}
+table {
+    border-collapse: collapse;
 }
 th {
     text-align: center;
@@ -27,8 +42,11 @@ td {
     text-align: center;
     border: 1px solid black;
     padding: 10px;
-    width: 50px;
-    height: auto;
+    height: 80px;
+    width: auto;
+    font-size: 25px;
+    font-family: 'Inclusive Sans', sans-serif;
+    font-weight: 500;
     
 }
 #menubar {
@@ -36,12 +54,18 @@ td {
     justify-content: space-between;
 }
 .menuboxes {
-    border: 5px solid  cyan;
+    border: 2px solid  cyan;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #menubar_left {
     display: flex;
     border: 3px solid pink;
+}
+#menubar_center {
+    font-weight: 700;
+    font-size: 20px;
 }
 #monthChangerCon {
     display: flex;
@@ -53,4 +77,47 @@ td {
 #selected {
     background-color: pink;
 
+}
+
+
+.year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#yearlist {
+    font-size: 15px;
+    padding: 5px;
+    background-color:aliceblue;
+    border: 0px;
+}
+#monthlist {
+    font-size: 15px;
+    padding: 5px;
+    background-color:aliceblue;
+    border: 0px;
+}
+button {
+    cursor: pointer;
+}
+#month_left_toggle_btn {
+    padding: 5px;
+    background-color:#c9c9c9;
+    border: none;
+}
+#month_right_toggle_btn {
+    border: none;
+    background-color:#c9c9c9;
+    padding: 5px;
+}
+
+#gotoToday {
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+}
+.fa-solid {
+    font-size: 20px;
+    cursor: pointer;
 }

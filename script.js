@@ -218,7 +218,6 @@ function initialize() {
      renderer.state.actualDate = date;
      renderer.state.actualDay = day;
 
- 
      renderer.loadDate(year,month,date);
      calTitle.innerText = ` ${weeks[day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
      const selectedBox = document.getElementsByClassName(`gatey-${renderer.state.date}`)[0];
