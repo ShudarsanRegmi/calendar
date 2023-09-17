@@ -98,6 +98,17 @@ let renderer = {
                 td.classList.add(`cell-${counter+j}`);
                 // let startday = counter+j+monthData[0].day;
                 td.classList.add(`gatey-${counter+j-monthData[0].day+1}`);
+
+                // adding event listener to selected day 
+                td.addEventListener("click",(event)=>{
+                    console.log(event.target.classList[1])
+                    let clickedBox = event.target;
+                    renderer.state.date = clickedBox.innerText;
+                    renderer.state.day = new Date(renderer.state.year,renderer.state.month,clickedBox.innerText).getDay();
+                    // alert(renderer.state.day)
+                    renderer.uiUpdate();
+                    console.log("I was clicked")
+                })
                 
                 // start filling the dates inside the box only after the interation; which makes first date display on the particular day 
 
@@ -128,6 +139,10 @@ let renderer = {
         this.state.year = year;
         this.state.month = month;
         this.state.date = date;
+        
+        // this.state.day = new Date().getDay(); // this was the culprit who was not allowing to update the day when a particular date is selected
+
+
         // updating on the ui
         monthlist.value = renderer.state.month;
         console.log("here we are");
@@ -135,10 +150,14 @@ let renderer = {
 
     },
     state: {
-        year:200,
-        month:200,
-        date: 0,
-        day: 0
+        year:null,
+        month: null,
+        date: null,
+        day: null,
+        actualYear : null,
+        actualMonth : null,
+        actualDate : null,
+        actualDay : null
     },
     stateUpdate: function(year,month) {
         renderer.state.month = month;
@@ -153,12 +172,28 @@ let renderer = {
         this.loadDate(renderer.state.year,renderer.state.month,renderer.state.date);
         monthlist.value = renderer.state.month;
         yearlist.value = renderer.state.year;
+
+        calTitle.innerText = ` ${weeks[renderer.state.day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
+      
+        try {
+            
+        
         const selectedBox = document.getElementsByClassName(`gatey-${this.state.date}`)[0];
-        selectedBox.classList.add("selected");
+        selectedBox.id = "selected";
         console.log(selectedBox);   
-        console.log("selected box ")
+        console.log("selected box ") 
+        }catch(error) {}
 
     },
+    goToToday: function() {
+        this.state.year = this.state.year;
+        this.state.month = this.state.month;
+        this.state.date = this.state.date;
+        
+        this.loadDate(this.state.year,this.state.month);
+        this.stateUpdate(this.state.year,this.state.month);
+        
+    }
     
 }
 
@@ -170,14 +205,22 @@ function initialize() {
      let mydate = new Date();
      let year = mydate.getFullYear();
      let month = mydate.getMonth();
-     let date = mydate.getDate();    
+     let date = mydate.getDate();  
+     let day = mydate.getDay();  
+     
      console.log("date = ", date);
+    
+     // maintaining state
+     renderer.state.actualYear = year;
+     renderer.state.actualMonth = month;
+     renderer.state.actualDate = date;
+     renderer.state.actualDay = day;
+
  
      renderer.loadDate(year,month,date);
-     let day = new Date(renderer.state.year,renderer.state.month,renderer.state.date).getDay();
      calTitle.innerText = ` ${weeks[day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
      const selectedBox = document.getElementsByClassName(`gatey-${renderer.state.date}`)[0];
-     selectedBox.classList.add("selected");
+     selectedBox.id = "selected";
 }
 initialize();
 
@@ -240,3 +283,4 @@ yearlistInput.addEventListener("change",()=> {
     renderer.stateUpdate(year,month);
     
 });
+

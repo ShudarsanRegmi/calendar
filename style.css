@@ -50,7 +50,7 @@ td {
 #menubar > form {
     display: flex;
 }
-.selected {
+#selected {
     background-color: pink;
 
 }
