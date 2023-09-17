@@ -19,7 +19,7 @@
                     </form>
                 </div>
                 <div id="monthChangerCon">
-                    <button id="month_left_toggle_btn">Left</button>
+                    <button id="month_left_toggle_btn"><i class="fa-solid fa-angles-left"></i></button>
                     <div class="month">
                          <form>
                             <select name="month" id="monthlist">
@@ -39,14 +39,22 @@
                         </select>
                     </form>
                     </div>
-                    <button id="month_right_toggle_btn">Right</button>
+                    <button id="month_right_toggle_btn">
+                        <i class="fa-solid fa-angles-right"></i>
+                    </button>
                 </div>
             </div>
-            <div class="menuboxes" id="menubar_center">center</div>
-            <div class="menuboxes" id="menubar_center">Settings</div>
+            <div class="menuboxes" id="menubar_center">Selected Date</div>
+            <div class="menuboxes gotoToday" id="goTodayBtn">
+                <button id="gotoToday">Today</button>
+            </div>
+            <div class="menuboxes" id="menubar_center">
+                <i class="fa-solid fa-gear"></i>
+            </div>
         </div>    
     </main>
     </section>
+<script src="https://kit.fontawesome.com/979899ea87.js" crossorigin="anonymous"></script>
 <script type="text/JavaScript" src="./script.js" ></script>
 </body>
 </html>

@@ -186,12 +186,14 @@ let renderer = {
 
     },
     goToToday: function() {
-        this.state.year = this.state.year;
-        this.state.month = this.state.month;
-        this.state.date = this.state.date;
+        console.log("going to today")
         
-        this.loadDate(this.state.year,this.state.month);
-        this.stateUpdate(this.state.year,this.state.month);
+        renderer.state.year = renderer.state.actualYear;
+        renderer.state.month = renderer.state.actualMonth;
+        renderer.state.date = renderer.state.actualDate;
+        
+        renderer.loadDate(renderer.state.year,renderer.state.month,renderer.state.date);
+        renderer.stateUpdate(renderer.state.year,renderer.state.month);
         
     }
     
@@ -221,6 +223,10 @@ function initialize() {
      calTitle.innerText = ` ${weeks[day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
      const selectedBox = document.getElementsByClassName(`gatey-${renderer.state.date}`)[0];
      selectedBox.id = "selected";
+
+     // making the gotoday button functional
+    const goTodayBtn = document.getElementById("goTodayBtn");
+    goTodayBtn.addEventListener("click",renderer.goToToday)
 }
 initialize();
 
