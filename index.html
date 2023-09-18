@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,25 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsiveness.css">
 </head>
+
 <body>
     <section>
-    <main>
-        <div class="calendarTitle" id="menubar_center">Selected Date</div>
+        <main>
+            <div class="calendarTitle" id="menubar_center">Selected Date</div>
 
-        <div id="menubar">
-            <div class="menuboxes" id="=menubar_left">
-                <div class="year">
-                    <form>
-                        <select name="year" id="yearlist" class="menubarItem">
-                        </select>
-                    </form>
-                </div>
-                <div id="monthChangerCon">
-                    <button id="month_left_toggle_btn"><i class="fa-solid fa-angles-left menubarItem"></i></button>
-                    <div class="month">
-                         <form>
-                            <select name="month" id="monthlist" class="menubarItem">
+            <div id="menubar">
+                <div class="menuboxes" id="=menubar_left">
+                    <div class="year">
+                        <form>
+                            <select name="year" id="yearlist" class="menubarItem">
+                            </select>
+                        </form>
+                    </div>
+                    <div id="monthChangerCon">
+                        <button id="month_left_toggle_btn"><i class="fa-solid fa-angles-left menubarItem"></i></button>
+                        <div class="month">
+                            <form>
+                                <select name="month" id="monthlist" class="menubarItem">
                                     <option value="0">January</option>
                                     <option value="1">February</option>
                                     <option value="2">March</option>
@@ -39,27 +40,27 @@
                                     <option value="10">November</option>
                                     <option value="11">December</option>
 
-                        </select>
-                    </form>
+                                </select>
+                            </form>
+                        </div>
+                        <button id="month_right_toggle_btn">
+                            <i class="fa-solid fa-angles-right menubarItem"></i>
+                        </button>
                     </div>
-                    <button id="month_right_toggle_btn">
-                        <i class="fa-solid fa-angles-right menubarItem"></i>
-                    </button>
+                </div>
+                <!-- picked from here -->
+                <div class="menuboxes gotoToday" id="goTodayBtn">
+                    <button id="gotoToday" class="menubarItem">Today</button>
+                </div>
+                <div class="menuboxes" id="menubar_center">
+                    <i class="fa-solid fa-gear menubarItem"></i>
                 </div>
             </div>
-            <!-- picked from here -->
-            <div class="menuboxes gotoToday" id="goTodayBtn">
-                <button id="gotoToday" class="menubarItem">Today</button>
-            </div>
-            <div class="menuboxes" id="menubar_center">
-                <i class="fa-solid fa-gear menubarItem"></i>
-            </div>
-        </div>    
-    </main>
+        </main>
     </section>
-<script src="https://kit.fontawesome.com/979899ea87.js" crossorigin="anonymous"></script>
-<script type="text/JavaScript" src="./script.js" ></script>
-<script type="text/javascript" src="./style.js"></script>
+    <script src="https://kit.fontawesome.com/979899ea87.js" crossorigin="anonymous"></script>
+    <script type="text/JavaScript" src="./script.js"></script>
+    <script type="text/javascript" src="./style.js"></script>
 </body>
 
 </html>

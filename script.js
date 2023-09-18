@@ -23,7 +23,6 @@ for(let i=1900;i<=2050;i++) {
 function calendarMaker(year) {
     let monthList = [];
     for(let month=0;month<12;month++) {
-        // console.log("month = " + month)
         let numOfDays = new Date(year,month+1,0).getDate();
         // javascript month is 0 based index, however we're still using month+1 because using 0 as the day parameter gives us the last date of previous month.
         // so while looking for the last date of janunary what I did is set the month to february and set the day as 0. This gave the last date ore prevous month. from which number of days of january could be easily found out 
@@ -31,15 +30,12 @@ function calendarMaker(year) {
         let dayList = [];
         for(let day =1;day<=numOfDays;day++) {
             let specificDay = new Date(year,month,day);
-            // console.log(specificDay);
-            // console.log("day = " + day)
             var dayDetails = {
                 tarikh: specificDay.getDate(),
                 day: specificDay.getDay()
             }
             dayList.push(dayDetails);
         }
-        // console.log("Another Month");
         monthList.push(dayList);
 
 
@@ -53,8 +49,6 @@ const main = document.querySelector("main");
 
 let renderer = {
     createTable : (monthData) => {
-        // console.log("rendering month..")
-        // console.log(monthData);
 
         const mytable = document.createElement("table");
         mytable.id="calendarTable";
@@ -64,8 +58,7 @@ let renderer = {
         mytable.appendChild(thead);
        
         const tbody = document.createElement("tbody");
-        // console.clear();
-        // console.log(tbody);
+        
         mytable.appendChild(tbody);
         // console.log("tbody appended")
         
@@ -82,10 +75,6 @@ let renderer = {
             thead_tr.appendChild(td);
         }
        
-        // const tr = document.createElement("tr");
-        // tbody.appendChild(tr);
-        // calculating how many rows are required
-
         let counter = 0;
         for (let i=0;i<6;i++) {
             const tr = document.createElement("tr");
@@ -99,7 +88,7 @@ let renderer = {
                 }
                 const td = document.createElement("td");
                 td.classList.add(`cell-${counter+j}`);
-                // let startday = counter+j+monthData[0].day;
+                
                 td.classList.add(`gatey-${counter+j-monthData[0].day+1}`);
 
                 // adding event listener to selected day 
@@ -116,9 +105,9 @@ let renderer = {
                 // start filling the dates inside the box only after the interation; which makes first date display on the particular day 
 
                 if(counter+j >= monthData[0].day &&  (counter+j-monthData[0].day) <= monthData.length) {
-                    // console.log(monthData.length)
+                    
                     td.innerText = monthData[counter+j-monthData[0].day].tarikh;
-                    // console.log(counter+j-monthData[0].day);
+                    
                     tbody.appendChild(tr);
 
                 }
@@ -126,8 +115,6 @@ let renderer = {
             }
             counter+=7;
         }
-        
-        // console.log(monthList);
         
     },
     loadDate: function(year,month,date=0) {
@@ -142,13 +129,9 @@ let renderer = {
         this.state.year = year;
         this.state.month = month;
         this.state.date = date;
-        
-        // this.state.day = new Date().getDay(); // this was the culprit who was not allowing to update the day when a particular date is selected
-
-
         // updating on the ui
         monthlist.value = renderer.state.month;
-        console.log("here we are");
+        
         yearlistInput.value = renderer.state.year;
 
     },
@@ -164,9 +147,7 @@ let renderer = {
     },
     stateUpdate: function(year,month) {
         renderer.state.month = month;
-        console.log("Inside stateupdate")
-        console.log(renderer.state.year);
-
+        
         this.uiUpdate();
         let day = new Date(renderer.state.year,renderer.state.month,renderer.state.date).getDay();
         calTitle.innerText = ` ${weeks[day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
@@ -186,8 +167,7 @@ let renderer = {
         
         const selectedBox = document.getElementsByClassName(`gatey-${this.state.date}`)[0];
         selectedBox.id = "selected";
-        console.log(selectedBox);   
-        console.log("selected box ") 
+        
         }catch(error) {}
 
         this.applyHoverEffectToTarikhCells();
@@ -195,7 +175,6 @@ let renderer = {
 
     },
     goToToday: function() {
-        console.log("going to today")
         
         renderer.state.year = renderer.state.actualYear;
         renderer.state.month = renderer.state.actualMonth;
@@ -215,7 +194,6 @@ let renderer = {
                 if(x>0) {
                     item.classList.add("gateyBoxes")
                 }
-                    console.log(x);
             }
         })
 
@@ -228,7 +206,6 @@ let renderer = {
         if(item.classList[1] != undefined) {
             let x = item.classList[0].split("-")[1];
             if(parseInt(x) % 7 == 0 ) {
-                console.log(item);
                 item.classList.add("sunday");
             }
 
@@ -249,7 +226,6 @@ function initialize() {
      let date = mydate.getDate();  
      let day = mydate.getDay();  
      
-     console.log("date = ", date);
     
      // maintaining state
      renderer.state.actualYear = year;
@@ -277,23 +253,16 @@ initialize();
 
 
 let audio = new Audio("./media/audios/page_turning.mp3");
-    // audio.src("./media/audios/page_turning.mp3")
-  
+
 
 month_lt_btn.addEventListener("click",()=> {
     audio.play();
-    // performing month modulo 12 operation
-    // let month =  (((renderer.state.month-1) % 12)+12)%12;
-    
-    console.log(renderer.state.month);
     let month = renderer.state.month -1;
-    // let year = null; // handle this in the future
-
+    
     if(month<0) {
         renderer.state.year--;
         month =  (((renderer.state.month-1) % 12)+12)%12;
-        console.log("month - ", month)
-        // alert();
+        
     }
 
     let year = renderer.state.year;
@@ -304,17 +273,14 @@ month_lt_btn.addEventListener("click",()=> {
 
 month_rt_btn.addEventListener("click",()=> {
     audio.play();
-   // performing month modulo 12 operation
-    // let month =  (((renderer.state.month-1) % 12)+12)%12;
-    console.log(renderer.state.month);
+    
     let month = renderer.state.month +1;
-    // let year = null; // handle this in the future
+    
 
     if(month>11) {
         renderer.state.year++;
         month =  (((renderer.state.month+1) % 12)+12)%12;
-        console.log("month - ", month)
-        // alert();
+        
     }
 
     let year = renderer.state.year;
@@ -327,12 +293,10 @@ monthlist.addEventListener("change",() =>{
     let month = monthlist.value;
     let year = renderer.state.year;
     renderer.stateUpdate(year,month);
-    console.log("Event triggered...");
 })
 
 yearlistInput.addEventListener("change",()=> {
     audio.play();
-    console.log("EVENT")
     let year = yearlist.value;
     renderer.state.year = year;
     console.log(yearlist.value)
