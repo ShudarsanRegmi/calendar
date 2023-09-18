@@ -1,4 +1,9 @@
 
+  @media only screen and (max-width: 757px) {
+    td {
+        padding: 15px;
+    }
+  }
   @media only screen and (max-width: 600px) {
     section {
         background-color: pink;
@@ -29,12 +34,19 @@
   }
 
   @media only screen and (max-width: 392px) {
+  * {
+    /* font-size: 5px; */
+    color: red;
+  }
     section {
         background-color: azure;
     }
     td {
-        width: 70px;
-        height: 50px;
-        padding: 0;
+        font-size: 14px;
+    }
+    .menubarItem {
+        color: blue;
+        font-size: 14px;
+        padding: 2px;
     }
   }
