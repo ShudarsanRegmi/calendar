@@ -5,9 +5,7 @@
     }
   }
   @media only screen and (max-width: 600px) {
-    section {
-        background-color: pink;
-    }
+   
     table {
         width: 100%
     }
@@ -23,9 +21,7 @@
   }
   
   @media only screen and (max-width: 490px) {
-    section {
-        background-color: rgb(94, 255, 0);
-    }
+    
     td {
         font-size: 18px;
         font-weight: 500;
@@ -34,19 +30,12 @@
   }
 
   @media only screen and (max-width: 392px) {
-  * {
-    /* font-size: 5px; */
-    color: red;
-  }
-    section {
-        background-color: azure;
-    }
+
     td {
         font-size: 14px;
         
     }
     .menubarItem {
-        color: blue;
         font-size: 14px;
         padding: 2px;
     }

@@ -267,17 +267,24 @@ function initialize() {
      // making the gotoday button functional
     const goTodayBtn = document.getElementById("goTodayBtn");
     goTodayBtn.addEventListener("click",renderer.goToToday)
+
+    // loading audio
+    
 }
 initialize();
 
 
 
 
-
+let audio = new Audio("./media/audios/page_turning.mp3");
+    // audio.src("./media/audios/page_turning.mp3")
+  
 
 month_lt_btn.addEventListener("click",()=> {
+    audio.play();
     // performing month modulo 12 operation
     // let month =  (((renderer.state.month-1) % 12)+12)%12;
+    
     console.log(renderer.state.month);
     let month = renderer.state.month -1;
     // let year = null; // handle this in the future
@@ -294,7 +301,9 @@ month_lt_btn.addEventListener("click",()=> {
     renderer.stateUpdate(year,month);
 
 })
+
 month_rt_btn.addEventListener("click",()=> {
+    audio.play();
    // performing month modulo 12 operation
     // let month =  (((renderer.state.month-1) % 12)+12)%12;
     console.log(renderer.state.month);
@@ -314,6 +323,7 @@ month_rt_btn.addEventListener("click",()=> {
 })
 
 monthlist.addEventListener("change",() =>{
+    audio.play();
     let month = monthlist.value;
     let year = renderer.state.year;
     renderer.stateUpdate(year,month);
@@ -321,6 +331,7 @@ monthlist.addEventListener("change",() =>{
 })
 
 yearlistInput.addEventListener("change",()=> {
+    audio.play();
     console.log("EVENT")
     let year = yearlist.value;
     renderer.state.year = year;
