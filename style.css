@@ -14,7 +14,7 @@ body  {
 }
 section {
     /* border: 10px solid red; */
-    background-color: orange;
+    background-color: azure;
     min-height:  100vh;
     width: 100vw;
     display: flex;
@@ -25,7 +25,7 @@ section {
 
 }
 main{
-    border: 5px solid blue;
+    /* border: 5px solid blue; */
     display: flex;
     flex-direction: column;
     padding: 5px;
@@ -42,27 +42,33 @@ td {
     text-align: center;
     border: 1px solid black;
     padding: 20px;
-    
-    
+    cursor: pointer; 
    flex-direction: column;
     font-size: 25px;
     font-family: 'Inclusive Sans', sans-serif;
     font-weight: 500;
     
 }
+td:hover {
+    /* background-color:#ffff24; */
+}
+.gateyBoxes:hover {
+   background-color: #30fff8;
+}
 #menubar {
+    border: 1px solid black;
     display: flex;
     justify-content: space-between;
 }
 .menuboxes {
-    border: 2px solid  cyan;
+    /* border: 1px solid  black; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 #menubar_left {
     display: flex;
-    border: 3px solid pink;
+    /* border: 3px solid pink; */
 }
 #menubar_center {
     font-weight: 700;
@@ -71,13 +77,13 @@ td {
 }
 #monthChangerCon {
     display: flex;
-    border: 3px solid red;
+    /* border: 3px solid red; */
 }
 #menubar > form {
     display: flex;
 }
 #selected {
-    background-color: pink;
+    background-color: #55fcf6;
 
 }
 
@@ -97,7 +103,7 @@ td {
 #monthlist {
     font-size: 15px;
     padding: 5px;
-    background-color:aliceblue;
+    background: none;
     border: 0px;
 }
 button {
@@ -105,21 +111,31 @@ button {
 }
 #month_left_toggle_btn {
     padding: 5px;
-    background-color:#c9c9c9;
+    background: none;
     border: none;
 }
 #month_right_toggle_btn {
     border: none;
-    background-color:#c9c9c9;
+    /* background-color:#c9c9c9; */
     padding: 5px;
 }
 
 #gotoToday {
-    border: none;
     padding: 5px;
     font-size: 15px;
+    background-color: #8ae1a9;
+    border: none;
 }
 .fa-solid {
     font-size: 20px;
     cursor: pointer;
+}
+select {
+    cursor: pointer;
+}
+.calendarTitle {
+    border: 1px solid black;
+}
+div {
+    /* margin: 5px !important; */
 }

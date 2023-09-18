@@ -172,9 +172,12 @@ let renderer = {
         this.loadDate(renderer.state.year,renderer.state.month,renderer.state.date);
         monthlist.value = renderer.state.month;
         yearlist.value = renderer.state.year;
+        if(renderer.state.date >0) {
+          calTitle.innerText = ` ${weeks[renderer.state.day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
+        }else{
+          calTitle.innerText = `${months_full[renderer.state.month]} ${renderer.state.year} `;
 
-        calTitle.innerText = ` ${weeks[renderer.state.day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
-      
+        }
         try {
             
         
@@ -183,6 +186,8 @@ let renderer = {
         console.log(selectedBox);   
         console.log("selected box ") 
         }catch(error) {}
+
+        this.applyHoverEffectToTarikhCells();
 
     },
     goToToday: function() {
@@ -195,6 +200,22 @@ let renderer = {
         renderer.loadDate(renderer.state.year,renderer.state.month,renderer.state.date);
         renderer.stateUpdate(renderer.state.year,renderer.state.month);
         
+    },
+    applyHoverEffectToTarikhCells: function() {
+
+    let cells = document.querySelectorAll("td");
+
+    cells.forEach(item => {
+        if(item.classList[1] != undefined) {
+            let x = item.classList[1].split("-")[1];
+            if(x>0) {
+                console.log(item);
+                item.classList.add("gateyBoxes")
+            }
+                console.log(x);
+        }
+})
+console.log(cells);
     }
     
 }
@@ -222,6 +243,7 @@ function initialize() {
      calTitle.innerText = ` ${weeks[day]} ${renderer.state.date} ${months_full[renderer.state.month]} ${renderer.state.year} `;
      const selectedBox = document.getElementsByClassName(`gatey-${renderer.state.date}`)[0];
      selectedBox.id = "selected";
+     renderer.applyHoverEffectToTarikhCells();
 
      // making the gotoday button functional
     const goTodayBtn = document.getElementById("goTodayBtn");
