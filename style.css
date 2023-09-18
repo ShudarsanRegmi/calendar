@@ -74,6 +74,7 @@ td:hover {
     font-weight: 700;
     font-size: 25px;
     padding: 5px;
+    color: #071952;
 }
 #monthChangerCon {
     display: flex;
@@ -138,4 +139,7 @@ select {
 }
 div {
     /* margin: 5px !important; */
+}
+.sunday {
+    color: red;
 }

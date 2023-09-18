@@ -76,6 +76,9 @@ let renderer = {
         for (let i in weeks) {
             const td = document.createElement("td");
             td.innerText = weeks[i];
+            if(i==0) {
+                td.style.color = "red";
+            }
             thead_tr.appendChild(td);
         }
        
@@ -188,6 +191,7 @@ let renderer = {
         }catch(error) {}
 
         this.applyHoverEffectToTarikhCells();
+        this.sundayStyle();
 
     },
     goToToday: function() {
@@ -203,19 +207,33 @@ let renderer = {
     },
     applyHoverEffectToTarikhCells: function() {
 
-    let cells = document.querySelectorAll("td");
+        let cells = document.querySelectorAll("td");
 
-    cells.forEach(item => {
-        if(item.classList[1] != undefined) {
-            let x = item.classList[1].split("-")[1];
-            if(x>0) {
-                console.log(item);
-                item.classList.add("gateyBoxes")
+        cells.forEach(item => {
+            if(item.classList[1] != undefined) {
+                let x = item.classList[1].split("-")[1];
+                if(x>0) {
+                    item.classList.add("gateyBoxes")
+                }
+                    console.log(x);
             }
-                console.log(x);
+        })
+
+    },
+    sundayStyle: function() {
+        
+    let sundayCells = document.querySelectorAll("td");
+    sundayCells.forEach(item=> {
+        // console.log(item)
+        if(item.classList[1] != undefined) {
+            let x = item.classList[0].split("-")[1];
+            if(parseInt(x) % 7 == 0 ) {
+                console.log(item);
+                item.classList.add("sunday");
+            }
+
         }
-})
-console.log(cells);
+    })
     }
     
 }
@@ -244,6 +262,7 @@ function initialize() {
      const selectedBox = document.getElementsByClassName(`gatey-${renderer.state.date}`)[0];
      selectedBox.id = "selected";
      renderer.applyHoverEffectToTarikhCells();
+     renderer.sundayStyle();
 
      // making the gotoday button functional
     const goTodayBtn = document.getElementById("goTodayBtn");
